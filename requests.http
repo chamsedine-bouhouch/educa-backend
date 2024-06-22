@@ -1,13 +1,40 @@
+# Teacher APIs
 
 # Add a Teacher
 POST http://localhost:3000/teacher HTTP/1.1
 Content-Type: application/json
 
 {
-    "name" : "bouhouch",
+    "name": "bouhouch",
     "email": "bouhouch@gmail.com"
 }
 
-
 # Get a List of Teachers
 GET http://localhost:3000/teacher HTTP/1.1
+
+# Student APIs
+
+# Add a Student
+POST http://localhost:3000/students HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "student1",
+    "teacherId": 1
+}
+
+# Get a List of Students
+GET http://localhost:3000/students HTTP/1.1
+
+# Get Students by Teacher
+GET http://localhost:3000/students/teacher/1 HTTP/1.1
+
+# Update a Student
+PATCH http://localhost:3000/students/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "updatedStudent1",
+    "teacherId": 2
+}
+

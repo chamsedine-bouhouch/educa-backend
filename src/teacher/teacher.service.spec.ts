@@ -34,9 +34,7 @@ describe('TeacherService', () => {
       { id: 2, name: 'Teacher Two', email: 'two@gmail.com' },
     ];
     it('should return an array of teachers', async () => {
-      jest
-        .spyOn(repository, 'find')
-        .mockResolvedValue(teacherArray as Teacher[]);
+      jest.spyOn(repository, 'find').mockResolvedValue(teacherArray as any);
 
       const teachers = await service.findAll();
       expect(teachers).toEqual(teacherArray);

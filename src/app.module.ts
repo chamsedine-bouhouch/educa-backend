@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
- import { TeacherModule } from './teacher/teacher.module';
+import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
 
 @Module({
@@ -16,6 +16,7 @@ import { StudentModule } from './student/student.module';
       database: process.env.DATABASE_NAME || 'educa_db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      autoLoadEntities: true,
     }),
     TeacherModule,
     StudentModule,
