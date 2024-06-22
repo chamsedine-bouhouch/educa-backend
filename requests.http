@@ -38,3 +38,23 @@ Content-Type: application/json
     "teacherId": 2
 }
 
+# Assignment APIs
+
+# Assign an Assignment to Students
+POST http://localhost:3000/assignments HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Nest ADN Homework",
+    "dueDate": "2024-06-24",
+    "studentIds": [1, 2],
+    "teacherId":1
+}
+
+# Grade an Assignment
+PATCH http://localhost:3000/assignments/1/grade HTTP/1.1
+Content-Type: application/json
+
+{
+    "status": "Pass"
+}

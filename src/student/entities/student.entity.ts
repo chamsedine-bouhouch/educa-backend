@@ -1,5 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Teacher } from '../../teacher/entities/teacher.entity';
+import { Assignment } from 'src/assignment/entities/assignment.entity';
 
 @Entity()
 export class Student {
@@ -11,4 +19,8 @@ export class Student {
 
   @ManyToOne(() => Teacher, (teacher) => teacher.students)
   teacher: Teacher;
+
+  @ManyToMany(() => Assignment, (assignment) => assignment.students)
+  @JoinTable()
+  assignments: Assignment[];
 }
