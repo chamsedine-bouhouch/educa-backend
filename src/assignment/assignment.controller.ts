@@ -15,4 +15,12 @@ export class AssignmentController {
   gradeAssignment(@Param('id') id: number, @Body('status') status: string) {
     return this.assignmentService.gradeAssignment(id, status);
   }
+
+  @Get('report/teacher/:teacherId')
+  getReportByTeacher(
+    @Param('teacherId') teacherId: number,
+    @Body('date') date: Date,
+  ) {
+    return this.assignmentService.getReportByTeacher(teacherId, date);
+  }
 }

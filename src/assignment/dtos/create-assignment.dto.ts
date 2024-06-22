@@ -5,7 +5,7 @@ export class CreateAssignmentDto {
   title: string;
 
   @IsDateString()
-  dueDate: string;
+  dueDate: Date;
 
   @IsNumber()
   teacherId: number;

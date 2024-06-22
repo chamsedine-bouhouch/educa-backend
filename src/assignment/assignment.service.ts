@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Assignment } from './entities/assignment.entity';
-import { Student } from 'src/student/entities/student.entity';
-import { Teacher } from 'src/teacher/entities/teacher.entity';
+import { Student } from '../student/entities/student.entity';
+import { Teacher } from '../teacher/entities/teacher.entity';
 import { CreateAssignmentDto } from './dtos/create-assignment.dto';
 
 @Injectable()
@@ -41,5 +41,16 @@ export class AssignmentService {
     });
     assignment.status = status;
     return this.assignmentRepository.save(assignment);
+  }
+
+  async getReportByTeacher(teacherId: number, date: Date): Promise<any> {
+    const assignments = await this.assignmentRepository.find({
+      where: { teacher: { id: teacherId }, dueDate: date, status: 'Pass' },
+    });
+    return {
+      teacherId,
+      date,
+      passedAssignmentsCount: assignments.length,
+    };
   }
 }

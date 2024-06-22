@@ -58,3 +58,8 @@ Content-Type: application/json
 {
     "status": "Pass"
 }
+
+# Reporting APIs
+
+# Basic Reporting for a Teacher
+GET http://localhost:3000/assignments/report/teacher/1?date=2024-06-24 HTTP/1.1
