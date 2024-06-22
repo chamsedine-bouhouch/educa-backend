@@ -1,16 +1,16 @@
 # Teacher APIs
 
 # Add a Teacher
-POST http://localhost:3000/teacher HTTP/1.1
+POST http://localhost:3000/teachers HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "bouhouch",
-    "email": "bouhouch@gmail.com"
+    "name": "Chamseddine Bouhouch",
+    "email": "bouhouchchamseddine@gmail.com"
 }
 
 # Get a List of Teachers
-GET http://localhost:3000/teacher HTTP/1.1
+GET http://localhost:3000/teachers HTTP/1.1
 
 # Student APIs
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 
 {
     "name": "updatedStudent1",
-    "teacherId": 2
+    "teacherId": 1
 }
 
 # Assignment APIs
