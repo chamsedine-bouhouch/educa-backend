@@ -34,7 +34,9 @@ describe('TeacherService', () => {
       { id: 2, name: 'Teacher Two', email: 'two@gmail.com' },
     ];
     it('should return an array of teachers', async () => {
-      jest.spyOn(repository, 'find').mockResolvedValue(teacherArray);
+      jest
+        .spyOn(repository, 'find')
+        .mockResolvedValue(teacherArray as Teacher[]);
 
       const teachers = await service.findAll();
       expect(teachers).toEqual(teacherArray);
@@ -42,15 +44,20 @@ describe('TeacherService', () => {
   });
 
   describe('create', () => {
-    const oneTeacher = { id: 1, name: 'Teacher One', email: 'one@gmail.com' };
+    const oneTeacher = {
+      id: 1,
+      name: 'Teacher One',
+      email: 'one@gmail.com',
+      students: [],
+    };
 
     it('should successfully create a teacher', async () => {
       const createTeacherDto: CreateTeacherDto = {
         name: 'Teacher One',
         email: 'one@gmail.com',
       };
-      jest.spyOn(repository, 'create').mockReturnValue(oneTeacher as any);
-      jest.spyOn(repository, 'save').mockResolvedValue(oneTeacher);
+      jest.spyOn(repository, 'create').mockReturnValue(oneTeacher as Teacher);
+      jest.spyOn(repository, 'save').mockResolvedValue(oneTeacher as Teacher);
 
       const teacher = await service.create(createTeacherDto);
       expect(teacher).toEqual(oneTeacher);
