@@ -19,6 +19,13 @@ export class StudentService {
     return this.studentRepository.find({ relations: ['teacher'] });
   }
 
+  async findOne(id: number): Promise<Student> {
+    return this.studentRepository.findOne({
+      where: { id },
+      relations: ['assignments', 'teacher'],
+    });
+  }
+
   async findByTeacher(teacherId: number): Promise<Student[]> {
     return this.studentRepository.find({
       where: { teacher: { id: teacherId } },

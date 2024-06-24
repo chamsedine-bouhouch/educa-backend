@@ -42,7 +42,11 @@ export class AssignmentService {
     assignment.status = status;
     return this.assignmentRepository.save(assignment);
   }
-
+  async findOne(id: number): Promise<Assignment> {
+    return this.assignmentRepository.findOne({
+      where: { id },
+    });
+  }
   async getReportByTeacher(teacherId: number, date: Date): Promise<any> {
     const assignments = await this.assignmentRepository.find({
       where: { teacher: { id: teacherId }, dueDate: date, status: 'Pass' },

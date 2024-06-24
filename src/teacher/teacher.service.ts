@@ -14,6 +14,12 @@ export class TeacherService {
   async findAll(): Promise<Teacher[]> {
     return this.teacherRepository.find();
   }
+  async findOne(id: number): Promise<Teacher> {
+    return this.teacherRepository.findOne({
+      where: { id },
+      relations: ['students'],
+    });
+  }
 
   async create(createTeacherDto: CreateTeacherDto): Promise<Teacher> {
     const newTeacher = this.teacherRepository.create(createTeacherDto);

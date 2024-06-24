@@ -1,6 +1,7 @@
 import { Controller, Post, Patch, Body, Param, Get } from '@nestjs/common';
 import { AssignmentService } from './assignment.service';
 import { CreateAssignmentDto } from './dtos/create-assignment.dto';
+import { Assignment } from './entities/assignment.entity';
 
 @Controller('assignments')
 export class AssignmentController {
@@ -9,6 +10,10 @@ export class AssignmentController {
   @Post()
   create(@Body() createAssignmentDto: CreateAssignmentDto) {
     return this.assignmentService.create(createAssignmentDto);
+  }
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<Assignment> {
+    return this.assignmentService.findOne(id);
   }
 
   @Patch(':id/grade')

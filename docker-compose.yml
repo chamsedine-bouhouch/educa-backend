@@ -36,7 +36,7 @@ services:
       DATABASE_PASSWORD: admin
       DATABASE_NAME: educa_db
     ports:
-      - '3000:3000'
+      - '3001:3001'
     depends_on:
       - postgres
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Teacher } from './entities/teacher.entity';
 import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dtos/create-teacher.dto';
@@ -10,6 +10,11 @@ export class TeacherController {
   @Get()
   findAll(): Promise<Teacher[]> {
     return this.teacherService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: number): Promise<Teacher> {
+    return this.teacherService.findOne(id);
   }
 
   @Post()
